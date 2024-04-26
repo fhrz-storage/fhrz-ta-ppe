@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
-import ultralytics
+from ultralytics import YOLO
 
 observe_photo = st.file_uploader("Upload a photo to observe", type=['jpg','png'])
 
