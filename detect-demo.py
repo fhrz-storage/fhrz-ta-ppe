@@ -8,5 +8,5 @@ try:
     st.image(observe_photo, caption='Uploaded photo for PPE detection')
 except AttributeError:
     st.header('Please upload an image first...')
-else:
-    st.image(observe_photo, caption='Uploaded photo for PPE detection')
+# else:
+#     st.image(observe_photo, caption='Uploaded photo for PPE detection')
