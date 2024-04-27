@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
-from ultralytics import YOLO
 
 observe_photo = st.file_uploader("Upload a photo to observe", type=['jpg','png'])
 
@@ -13,6 +12,7 @@ except AttributeError:
 #     st.image(observe_photo, caption='Uploaded photo for PPE detection')
 
 if st.button("Detect PPEs", type="primary"):
+    from ultralytics import YOLO
     detect = YOLO('/content/runs/detect/train2/weights/best.pt')
     try:
         results = detect.predict(source=observe_photo, save=True) # Display preds. Accepts all YOLO predict arguments
