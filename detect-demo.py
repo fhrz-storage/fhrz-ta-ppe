@@ -17,7 +17,7 @@ except AttributeError:
 if st.button("Detect PPEs", type="primary"):
     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
     try:
-        results = detect.predict(source=observe_photo, show=True)
+        results = detect.predict(observe_photo, save=True)
         image_detect = st.image(results) # Display preds. Accepts all YOLO predict arguments
     except AttributeError:
         st.text("Please enter the photos that you want to upload first")
