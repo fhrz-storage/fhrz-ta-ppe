@@ -23,8 +23,9 @@ if st.button("Detect PPEs", type="primary"):
         if file_extension in ['jpg', 'jpeg', 'png']:
             detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
             try:
-                results = detect.predict(observe_photo, save=True)
-                image_detect = st.image(results) # Display preds. Accepts all YOLO predict arguments
+                with st.spinner("Detecting objects..."):
+                    results = detect.predict(observe_photo, save=True)
+                    image_detect = st.image(results) # Display preds. Accepts all YOLO predict arguments
             except AttributeError:
                 st.text("Error: Unable to detect PPEs.")
         else:
