@@ -1,4 +1,4 @@
 streamlit
 opencv-python-headless
-libgl1
+libgl
 ultralytics
