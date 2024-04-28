@@ -19,7 +19,7 @@ if uploaded_image is not None:
     st.image(image_usable, caption=f'{uploaded_image.name}')
 
     with tempfile.NamedTemporaryFile() as f:
-        f.write(image_usable.read())
+        f.write(image_usable)
         f.flush()
         st.write(f.name)
     # Detecting using our trained model
