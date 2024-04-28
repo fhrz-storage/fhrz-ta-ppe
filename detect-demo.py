@@ -21,9 +21,9 @@ if uploaded_file is not None:
     pil_image = Image.open(uploaded_file)
 
     # Convert to numpy array
-    numpy_image = np.array(pil_image)
+    # numpy_image = np.array(pil_image)
 
     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
     with st.spinner("Detecting objects..."):
-        results = detect.predict(numpy_image)
+        results = detect.predict(pil_image)
         st.image(results)
