@@ -24,12 +24,12 @@ if uploaded_image is not None:
 
     # Detecting using our trained model
 
-    if st.button("Detect PPEs", type="primary"):
-        detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
-        with st.spinner("Detecting objects..."):
-            results = detect.predict("prediction_results/{uploaded_image.name}.jpg")
-            for x in results:
-                st.image(x, caption="Image with object detected in it")
+    # if st.button("Detect PPEs", type="primary"):
+    #     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
+    #     with st.spinner("Detecting objects..."):
+    #         results = detect.predict("prediction_results/{uploaded_image.name}.jpg")
+    #         for x in results:
+    #             st.image(x, caption="Image with object detected in it")
 
     # except AttributeError:
     #     st.header('Please upload an image first...')
