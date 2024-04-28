@@ -16,7 +16,7 @@ if uploaded_image is not None:
     # try:
     image_raw = uploaded_image.read()
     image_repackaged = Image.open(io.BytesIO(image_raw))
-    image_usable = image_repackaged.save(f"{image_repackaged.name}")
+    image_usable = image_repackaged.save(image_repackaged)
     st.image(image_usable)
 
     # Detecting using our trained model
