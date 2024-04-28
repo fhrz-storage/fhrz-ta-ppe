@@ -14,7 +14,7 @@ if image_file is not None:
     st.write(file_details)
 
     # Load and display the image
-    img = load_image(image_file)
+    img = Image.open(image_file)
     st.image(img, height=250, width=250)
 
 def save_uploadedfile(uploadedfile):
