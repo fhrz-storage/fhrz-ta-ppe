@@ -22,7 +22,8 @@ if uploaded_image is not None:
         detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
         with st.spinner("Detecting objects..."):
             results = detect.predict(image_usable)
-            st.image(results.orig_img)
+            for x in results:
+                st.image(x, caption="Image with object detected in it")
 
     # except AttributeError:
     #     st.header('Please upload an image first...')
