@@ -14,7 +14,6 @@ if uploaded_file is not None:
     # Display the image
     st.image(bytes_data)
 
-if uploaded_file is not None:
     # Read file as bytes
     bytes_data = uploaded_file.getvalue()
 
@@ -26,9 +25,5 @@ if uploaded_file is not None:
 
     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
     with st.spinner("Detecting objects..."):
-        results = detect.predict(numpy_image, save=True)
-        for x in results:
-            st.image(x, caption="Image with object detected in it")
-
-    # except AttributeError:
-    #     st.header('Please upload an image first...')
+        results = detect.predict(numpy_image)
+        st.image(results)
