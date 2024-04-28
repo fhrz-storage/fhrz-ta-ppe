@@ -27,7 +27,7 @@ save_uploadedfile(image_file)
 if st.button("Detect PPEs", type="primary"):
     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
     with st.spinner("Detecting objects..."):
-        results = detect.predict(image_file)
+        results = detect.predict(img)
         for x in results:
             st.image(x, caption="Image with object detected in it")
 
