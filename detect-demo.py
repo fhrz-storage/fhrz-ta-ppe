@@ -21,9 +21,8 @@ if uploaded_image is not None:
     if st.button("Detect PPEs", type="primary"):
         detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
         with st.spinner("Detecting objects..."):
-            results = detect.predict(image_usable, save=True)
-            result_image = cv2.imwrite('result_image.jpg', cv2.cvtColor(results.render()[0], cv2.COLOR_RGB2BGR))
-            st.image(result_image)
+            results = detect.predict(image_usable)
+            st.image(results)
 
     # except AttributeError:
     #     st.header('Please upload an image first...')
