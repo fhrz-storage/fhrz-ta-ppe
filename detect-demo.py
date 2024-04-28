@@ -27,9 +27,10 @@ if uploaded_file is not None:
 
     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
     # with st.spinner("Detecting objects..."):
-    results = detect.predict(pil_image, save=True)
+    results = detect.predict(pil_image)
     # st.text(results)
     save_path = results.path
     st.write(save_path)
+    st.write(results)
     # pil_result = Image.open(f"runs/detect/predict9/{uploaded_file.name}.jpg")
     # st.image(pil_result)
