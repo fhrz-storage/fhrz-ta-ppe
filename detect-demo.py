@@ -2,10 +2,17 @@ import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
 import io
+import tempfile
+
 
 # Upload the photo that we want to observe
 
 uploaded_image = st.file_uploader("Upload a photo to observe", type=['jpg', 'jpeg', 'png'])
+
+with tempfile.NamedTemporaryFile() as f:
+    f.write(uploaded_image.read())
+    f.flush()
+    st.write(f.name)
 
 # Check whether the photo is correct
 
