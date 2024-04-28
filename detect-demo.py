@@ -16,7 +16,7 @@ if uploaded_image is not None:
         temp_file.write(uploaded_image.getvalue())
         temp_file.seek(0)
     
-    st.image(f"prediction_results/{uploaded_image.name}.jpg")
+    st.image(f"prediction_results/{uploaded_image.name}")
     # try:
     # image_raw = uploaded_image.read()
     # image_usable = Image.open(io.BytesIO(image_raw))
