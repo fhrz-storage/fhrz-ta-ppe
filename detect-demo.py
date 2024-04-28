@@ -12,7 +12,7 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
 
     # Display the image
-    st.image(bytes_data)
+    # st.image(bytes_data)
 
     # Read file as bytes
     bytes_data = uploaded_file.getvalue()
@@ -23,7 +23,9 @@ if uploaded_file is not None:
     # Convert to numpy array
     # numpy_image = np.array(pil_image)
 
-    detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
-    with st.spinner("Detecting objects..."):
-        results = detect.predict(pil_image)
-        st.image(results)
+    st.image(pil_image)
+
+    # detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
+    # with st.spinner("Detecting objects..."):
+    #     results = detect.predict(pil_image)
+    #     st.image(results)
