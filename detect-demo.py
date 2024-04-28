@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
 import io
-import cv2
 
 # Upload the photo that we want to observe
 
@@ -23,7 +22,7 @@ if uploaded_image is not None:
         detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
         with st.spinner("Detecting objects..."):
             results = detect.predict(image_usable)
-            st.image(results)
+            st.image(results.orig_img)
 
     # except AttributeError:
     #     st.header('Please upload an image first...')
