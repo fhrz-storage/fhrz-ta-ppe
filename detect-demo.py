@@ -2,34 +2,34 @@ import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
 from tempfile import NamedTemporaryFile
-import io
+import os
 
 # Upload the photo that we want to observe
 
-uploaded_image = st.file_uploader("Upload a photo to observe", type=['jpg', 'jpeg', 'png'])
+image_file = st.file_uploader("Upload An Image", type=['png', 'jpeg', 'jpg'])
 
-# Check whether the photo is correct
+if image_file is not None:
+    # Display file details
+    file_details = {"FileName": image_file.name, "FileType": image_file.type}
+    st.write(file_details)
 
-if uploaded_image is not None:
-    # Save the uploaded image to a temporary file
-    with NamedTemporaryFile(suffix=".jpg") as temp_file:
-        temp_file.write(uploaded_image.getvalue())
-        temp_file.seek(0)
-    
-    st.image(f"{uploaded_image.name}")
-    # try:
-    # image_raw = uploaded_image.read()
-    # image_usable = Image.open(io.BytesIO(image_raw))
-    # st.image(image_usable)
+    # Load and display the image
+    img = load_image(image_file)
+    st.image(img, height=250, width=250)
 
-    # Detecting using our trained model
+def save_uploadedfile(uploadedfile):
+    with open(os.path.join("tempDir", uploadedfile.name), "wb") as f:
+        f.write(uploadedfile.getbuffer())
+    return st.success(f"Saved File: {uploadedfile.name} to tempDir")
 
-    # if st.button("Detect PPEs", type="primary"):
-    #     detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
-    #     with st.spinner("Detecting objects..."):
-    #         results = detect.predict("prediction_results/{uploaded_image.name}.jpg")
-    #         for x in results:
-    #             st.image(x, caption="Image with object detected in it")
+save_uploadedfile(image_file)
+
+if st.button("Detect PPEs", type="primary"):
+    detect = YOLO('https://raw.githubusercontent.com/fhrz-storage/fhrz-ta-ppe/main/peripherals/weights/best.pt')
+    with st.spinner("Detecting objects..."):
+        results = detect.predict(image_file)
+        for x in results:
+            st.image(x, caption="Image with object detected in it")
 
     # except AttributeError:
     #     st.header('Please upload an image first...')
