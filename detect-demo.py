@@ -11,10 +11,9 @@ uploaded_image = st.file_uploader("Upload a photo to observe", type=['jpg', 'jpe
 
 if uploaded_image is not None:
     # try:
-    st.image(uploaded_image, caption='Uploaded photo for PPE detection')
-    image_raw = Image.open(uploaded_image)
-    image_raw = image_raw.save(f'data/images/{uploaded_image.name}')
-    image_usable = f'data/images/{uploaded_image.name}'
+    image_raw = uploaded_image.read()
+    image_usable = Image.open(io.BytesIO(image_raw))
+    st.image(image_usable, caption='Uploaded photo for PPE detection')
 
     # Detecting using our trained model
 
