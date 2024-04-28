@@ -29,7 +29,7 @@ if uploaded_file is not None:
     # with st.spinner("Detecting objects..."):
     results = detect.predict(pil_image)
     # st.text(results)
-    save_path = results.path
+    # save_path = results.path
     st.write(results)
     # pil_result = Image.open(f"runs/detect/predict9/{uploaded_file.name}.jpg")
     # st.image(pil_result)
